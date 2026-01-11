@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_cat"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Cat Image -->
+        <ImageView
+            android:id="@+id/iv_cat_image"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="@color/primary_yellow"
+            android:contentDescription="Cat Image"
+            android:scaleType="centerCrop" />
+
+        <!-- Cat Name -->
+        <TextView
+            android:id="@+id/tv_cat_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_family"
+            android:padding="12dp"
+            android:text="Cat Name"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
