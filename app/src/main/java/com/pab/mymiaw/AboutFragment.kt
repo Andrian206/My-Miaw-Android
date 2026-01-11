@@ -5,8 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.fragment.findNavController
 import androidx.fragment.app.Fragment
 
 class AboutFragment : Fragment() {
@@ -21,7 +20,8 @@ class AboutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val ivMenu = view.findViewById<ImageView>(R.id.iv_menu)
-        // 1
+        view.findViewById<ImageView>(R.id.iv_back_about).setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 }

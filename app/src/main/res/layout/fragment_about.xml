@@ -15,10 +15,10 @@
 
         <!-- Header -->
         <ImageView
-            android:id="@+id/iv_menu"
+            android:id="@+id/iv_back_about"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/ic_menu"
+            android:src="@drawable/ic_arrow_back"
             android:contentDescription="Menu"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
