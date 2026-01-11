@@ -23,12 +23,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             override fun onResponse(call: Call<List<CatBreed>>, response: Response<List<CatBreed>>) {
                 if (response.isSuccessful) {
                     val listKucing = response.body() ?: emptyList()
-
-                    rvCats.adapter = CatAdapter(listKucing) { kucing ->
+                    val adapterKucing = CatAdapter(listKucing) { kucing ->
                         val bundle = Bundle()
                         bundle.putParcelable("dataKucing", kucing)
                         findNavController().navigate(R.id.action_homeFragment_to_detailFragment, bundle)
                     }
+                    rvCats.adapter = adapterKucing
                 }
             }
 

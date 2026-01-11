@@ -7,6 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.model.GlideUrl
+import com.bumptech.glide.load.model.LazyHeaders
 
 class CatAdapter(
     private val list: List<CatBreed>,
@@ -25,12 +27,23 @@ class CatAdapter(
 
     override fun onBindViewHolder(holder: CatViewHolder, position: Int) {
         val cat = list[position]
+        val urlString = cat.image?.url ?: "https://cdn2.thecatapi.com/images/${cat.referenceImageId}.jpg"
+
+        val glideUrl = GlideUrl(
+            urlString,
+            LazyHeaders.Builder()
+                .addHeader("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
+                .build()
+        )
+
         holder.tvName.text = cat.name
 
+        println("DEBUG_MIAW: Nama: ${cat.name}, URL: $glideUrl")
+
         Glide.with(holder.itemView.context)
-            .load(cat.image?.url)
+            .load(glideUrl)
             .placeholder(R.drawable.ic_launcher_background)
-            .error(R.drawable.ic_launcher_background)
+            .error(R.mipmap.ic_launcher)
             .into(holder.imgCat)
 
         holder.itemView.setOnClickListener { onItemClick(cat) }
