@@ -2,6 +2,7 @@ package com.pab.mymiaw
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -17,6 +18,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        view.findViewById<ImageView>(R.id.iv_menu).setOnClickListener {
+            (activity as MainActivity).openDrawer()
+        }
 
         val user = FirebaseAuth.getInstance().currentUser
         if (user != null) {

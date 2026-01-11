@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/logo"
+                android:src="@drawable/me"
                 android:contentDescription="Profile Picture" />
 
         </com.google.android.material.card.MaterialCardView>
@@ -145,7 +145,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="24dp"
             android:fontFamily="@font/inter_regular"
-            android:text="MyMiaw Team"
+            android:text="Rio Andika Andriansyah \n20230810155 \nTINFC-2023-05"
             android:textColor="@android:color/black"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
