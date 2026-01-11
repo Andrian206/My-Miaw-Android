@@ -7,6 +7,8 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.FirebaseApp
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -17,11 +19,12 @@ class MainActivity : AppCompatActivity() {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
 
+        // Inisialisasi Firebase terlebih dahulu
+        FirebaseApp.initializeApp(this)
         auth = FirebaseAuth.getInstance()
 
+        // Set kondisi splash screen untuk tetap tampil selama pengecekan auth
         splashScreen.setKeepOnScreenCondition { isCheckingAuth }
-
-        checkAuthAndNavigate()
 
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
@@ -30,13 +33,17 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // Cek auth setelah UI siap
+        checkAuthAndNavigate()
     }
 
     private fun checkAuthAndNavigate() {
         val currentUser = auth.currentUser
 
         if (currentUser == null) {
-            isCheckingAuth = true
+            // User belum login
+            isCheckingAuth = false
         } else {
             // User sudah login, tampilkan HomeFragment
             isCheckingAuth = false
