@@ -9,17 +9,16 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import com.pab.mymiaw.data.model.Cat
 
 class DetailFragment : Fragment() {
 
-    private var cat: Cat? = null
+    private var cat: CatBreed? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             @Suppress("DEPRECATION")
-            cat = it.getSerializable("cat") as? Cat
+            cat = it.getSerializable("cat") as? CatBreed
         }
     }
 
