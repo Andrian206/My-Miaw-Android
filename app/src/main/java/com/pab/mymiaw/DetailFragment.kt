@@ -13,13 +13,11 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // 1. Tangkap data yang dikirim dari HomeFragment
         val cat = arguments?.getParcelable<CatBreed>("dataKucing")
 
-        // 2. Hubungkan dengan ID di XML Detail kamu
-        val ivDetail = view.findViewById<ImageView>(R.id.iv_detail)
-        val tvName = view.findViewById<TextView>(R.id.tv_detail_name)
-        val tvDesc = view.findViewById<TextView>(R.id.tv_detail_desc)
+        val ivDetail = view.findViewById<ImageView>(R.id.iv_cat)
+        val tvName = view.findViewById<TextView>(R.id.tv_cat_name)
+        val tvDesc = view.findViewById<TextView>(R.id.tv_description)
         val ivBack = view.findViewById<ImageView>(R.id.iv_back)
 
         cat?.let {
@@ -30,7 +28,6 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
             Glide.with(this).load(imageUrl).into(ivDetail)
         }
 
-        // 3. Tombol kembali
         ivBack.setOnClickListener {
             findNavController().navigateUp()
         }
