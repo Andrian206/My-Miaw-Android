@@ -15,15 +15,12 @@ class MainActivity : AppCompatActivity() {
     private var isCheckingAuth = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        // Install splash screen sebelum super.onCreate()
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
 
-        // Inisialisasi Firebase terlebih dahulu
         FirebaseApp.initializeApp(this)
         auth = FirebaseAuth.getInstance()
 
-        // Set kondisi splash screen untuk tetap tampil selama pengecekan auth
         splashScreen.setKeepOnScreenCondition { isCheckingAuth }
 
         enableEdgeToEdge()
@@ -34,7 +31,6 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // Cek auth setelah UI siap
         checkAuthAndNavigate()
     }
 
@@ -42,10 +38,7 @@ class MainActivity : AppCompatActivity() {
         val currentUser = auth.currentUser
 
         if (currentUser == null) {
-            // User belum login
-            isCheckingAuth = false
         } else {
-            // User sudah login, tampilkan HomeFragment
             isCheckingAuth = false
         }
     }
