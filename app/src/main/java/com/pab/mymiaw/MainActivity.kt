@@ -1,6 +1,7 @@
 package com.pab.mymiaw
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -9,7 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.FirebaseApp
@@ -23,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
 
+        setContentView(R.layout.activity_main)
+
         FirebaseApp.initializeApp(this)
         auth = FirebaseAuth.getInstance()
 
@@ -32,22 +35,33 @@ class MainActivity : AppCompatActivity() {
         val navView = findViewById<NavigationView>(R.id.nav_view)
         val btnSignOut = findViewById<Button>(R.id.btn_sign_out)
 
-        // Setup NavController
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment) as? NavHostFragment
+            ?: throw IllegalStateException("NavHostFragment tidak ditemukan!")
         val navController = navHostFragment.navController
 
-        // Hubungkan Sidebar Menu dengan Navigasi
         navView.setupWithNavController(navController)
 
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
+        btnSignOut.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            navController.navigate(R.id.signInFragment)
+            drawerLayout.closeDrawers()
+        }
 
-        // 3
+        enableEdgeToEdge()
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(android.R.id.content)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.signInFragment || destination.id == R.id.signUpFragment) {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+            } else {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+            }
         }
 
         checkAuthAndNavigate()
