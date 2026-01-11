@@ -6,4 +6,6 @@
     <color name="primary_yellow">#FFE9B649</color>
     <color name="secondary_yellow">#FFA06D00</color>
     <color name="another_yellow">#FFBCA36F</color>
+    <color name="hint_color">#FFBCA36F</color>
+    <color name="text_dark">#FF333333</color>
 </resources>
