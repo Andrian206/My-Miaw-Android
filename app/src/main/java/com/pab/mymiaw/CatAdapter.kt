@@ -38,8 +38,6 @@ class CatAdapter(
 
         holder.tvName.text = cat.name
 
-        println("DEBUG_MIAW: Nama: ${cat.name}, URL: $glideUrl")
-
         Glide.with(holder.itemView.context)
             .load(glideUrl)
             .placeholder(R.drawable.ic_launcher_background)
