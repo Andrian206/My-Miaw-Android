@@ -2,11 +2,13 @@ package com.pab.mymiaw
 
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,6 +17,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            val emailUser = user.email?.split("@")?.get(0) ?: "User"
+            view.findViewById<TextView>(R.id.tv_hello).text = "Hello, $emailUser"
+        }
 
         val rvCats = view.findViewById<RecyclerView>(R.id.rv_cats)
         rvCats.layoutManager = GridLayoutManager(context, 2)

@@ -16,7 +16,7 @@ import com.google.firebase.FirebaseApp
 
 class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
-    // 4
+    private lateinit var drawerLayout: DrawerLayout
     private var isCheckingAuth = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +27,17 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         splashScreen.setKeepOnScreenCondition { isCheckingAuth }
+
+        drawerLayout = findViewById(R.id.drawer_layout)
+        val navView = findViewById<NavigationView>(R.id.nav_view)
+        val btnSignOut = findViewById<Button>(R.id.btn_sign_out)
+
+        // Setup NavController
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+        val navController = navHostFragment.navController
+
+        // Hubungkan Sidebar Menu dengan Navigasi
+        navView.setupWithNavController(navController)
 
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
@@ -47,4 +58,7 @@ class MainActivity : AppCompatActivity() {
         isCheckingAuth = false
     }
 
+    fun openDrawer() {
+        drawerLayout.openDrawer(GravityCompat.START)
+    }
 }
