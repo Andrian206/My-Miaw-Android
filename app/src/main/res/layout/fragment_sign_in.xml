@@ -7,14 +7,13 @@
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"g
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="28dp"
         android:paddingTop="32dp"
         android:paddingEnd="28dp"
         android:paddingBottom="32dp">
 
-        <!-- Logo -->
         <ImageView
             android:id="@+id/iv_logo"
             android:layout_width="120dp"
@@ -26,7 +25,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Title -->
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="0dp"
@@ -34,7 +32,7 @@
             android:layout_marginTop="32dp"
             android:fontFamily="@font/inter_family"
             android:lineSpacingExtra="4dp"
-            android:text="Sign in to your\nAccount"
+            android:text="@string/sign_in_to_your_account"
             android:textColor="@color/secondary_yellow"
             android:textSize="28sp"
             android:textStyle="bold"
@@ -42,29 +40,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_logo" />
 
-        <!-- Subtitle -->
         <TextView
             android:id="@+id/tv_subtitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/inter_family"
-            android:text="Enter your email and password to sign in"
+            android:text="@string/enter_your_email_and_password_to_sign_in"
             android:textColor="@color/another_yellow"
-            android:textSize="13sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
-        <!-- Username Input -->
         <EditText
-            android:id="@+id/et_username"
+            android:id="@+id/et_email_sign_in"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="28dp"
             android:background="@drawable/bg_white_rounded"
             android:fontFamily="@font/inter_family"
-            android:hint="Username"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
@@ -75,15 +71,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_subtitle" />
 
-        <!-- Password Input -->
         <EditText
-            android:id="@+id/et_password"
+            android:id="@+id/et_password_sign_in"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="12dp"
             android:background="@drawable/bg_white_rounded"
             android:fontFamily="@font/inter_family"
-            android:hint="Password"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:paddingStart="20dp"
             android:paddingEnd="48dp"
@@ -92,57 +87,59 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_username" />
+            app:layout_constraintTop_toBottomOf="@id/et_email_sign_in" />
 
-        <!-- Password Toggle Icon -->
         <ImageView
             android:id="@+id/iv_toggle_password"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginEnd="14dp"
-            android:contentDescription="Toggle password"
+            android:contentDescription="@string/toggle_password"
             android:src="@drawable/ic_visibility_off"
-            app:layout_constraintBottom_toBottomOf="@id/et_password"
-            app:layout_constraintEnd_toEndOf="@id/et_password"
-            app:layout_constraintTop_toTopOf="@id/et_password" />
+            app:layout_constraintBottom_toBottomOf="@id/et_password_sign_in"
+            app:layout_constraintEnd_toEndOf="@id/et_password_sign_in"
+            app:layout_constraintTop_toTopOf="@id/et_password_sign_in" />
 
-        <!-- Sign In Button -->
         <Button
             android:id="@+id/btn_sign_in"
             style="@style/YellowButton"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            android:text="Sign in"
+            android:text="@string/sign_in"
             android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_password" />
+            app:layout_constraintTop_toBottomOf="@id/et_password_sign_in" />
 
-        <!-- Google Sign In Button -->
         <Button
             android:id="@+id/btn_google_sign_in"
             style="@style/WhiteButton"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="12dp"
-            app:icon="@drawable/ic_google"
-            app:iconGravity="textStart"
-            app:iconPadding="8dp"
-            android:text="Continue with Google"
-            android:textAllCaps="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_sign_in" />
 
-        <!-- Sign Up Text -->
+        <ImageView
+            android:id="@+id/iv_google"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="14dp"
+            android:src="@drawable/ic_google"
+            app:layout_constraintBottom_toBottomOf="@id/btn_google_sign_in"
+            app:layout_constraintStart_toStartOf="@id/btn_google_sign_in"
+            app:layout_constraintEnd_toEndOf="@id/btn_google_sign_in"
+            app:layout_constraintTop_toTopOf="@id/btn_google_sign_in" />
+
         <TextView
             android:id="@+id/tv_no_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/inter_family"
-            android:text="Don't have an account? "
+            android:text="@string/don_t_have_an_account"
             android:textColor="@color/another_yellow"
             android:textSize="13sp"
             app:layout_constraintEnd_toStartOf="@id/tv_sign_up"
@@ -155,7 +152,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inter_family"
-            android:text="Sign up"
+            android:layout_marginLeft="2dp"
+            android:text="@string/sign_up"
             android:textColor="@color/primary_yellow"
             android:textSize="13sp"
             android:textStyle="bold"

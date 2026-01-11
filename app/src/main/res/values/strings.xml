@@ -1,5 +1,17 @@
 <resources>
     <string name="app_name">Miaw!</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="sign_in_to_your_account">Sign in to your\nAccount</string>
+    <string name="enter_your_email_and_password_to_sign_in">Enter your email and password to sign in</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="toggle_password">Toggle password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign up</string>
+    <string name="sign_up_your_account">Sign up your \nAccount</string>
+    <string name="enter_your_details_to_create_an_account">Enter your details to create an account</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="already_have_an_account">Already have an account?</string>
 </resources>

@@ -22,10 +22,6 @@ class AboutFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val ivMenu = view.findViewById<ImageView>(R.id.iv_menu)
-        val drawerLayout = requireActivity().findViewById<DrawerLayout>(R.id.drawer_layout)
-
-        ivMenu.setOnClickListener {
-            drawerLayout.openDrawer(GravityCompat.START)
-        }
+        // 1
     }
 }
