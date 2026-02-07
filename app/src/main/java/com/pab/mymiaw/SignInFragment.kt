@@ -33,8 +33,8 @@ class SignInFragment : Fragment(R.layout.fragment_sign_in) {
 
     companion object {
         private const val TAG = "SignInFragment"
-        // Replace with your Web Client ID from Firebase Console
-        private const val WEB_CLIENT_ID = "YOUR_WEB_CLIENT_ID.apps.googleusercontent.com"
+        // Web Client ID from google-services.json (oauth_client with client_type: 3)
+        private const val WEB_CLIENT_ID = "731447226829-urgrd1fqhkc0bkgvpjv9sf7qpbkub1pq.apps.googleusercontent.com"
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
